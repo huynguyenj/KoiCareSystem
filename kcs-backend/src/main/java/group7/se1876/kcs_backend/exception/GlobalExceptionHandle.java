@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 //Global exception (in service layer)
 
-
 public class GlobalExceptionHandle {
     @ExceptionHandler(value = Exception.class)
     ResponseEntity<ApiResponse> handleRuntimeException(RuntimeException exception){
@@ -46,7 +45,7 @@ public class GlobalExceptionHandle {
         try {
             errorCode = ErrorCode.valueOf(enumKey);
         }catch (IllegalArgumentException e){
-
+            e.printStackTrace();
         }
 
         ApiResponse apiResponse = new ApiResponse<>();

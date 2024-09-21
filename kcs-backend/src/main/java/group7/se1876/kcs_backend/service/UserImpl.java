@@ -8,6 +8,8 @@ import group7.se1876.kcs_backend.exception.ErrorCode;
 import group7.se1876.kcs_backend.mapper.UserMapper;
 import group7.se1876.kcs_backend.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,13 +21,17 @@ public class UserImpl implements  UserService{
     public UserDto createUser(UserDto userDto) {
 
         // Map data object to entity
-        if(userRepository.existsByUserName(userDto.getUserName())){
+        if(userRepository.existsByUserName(userDto.getUserName()) || userRepository.existsByEmail(userDto.getEmail())){
             throw new AppException(ErrorCode.USER_EXISTED);
         }
         User user = UserMapper.mapToUser(userDto);
 
-        // Save data already map to database
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+
+        // Save data already map to entity to database
         User saveUser = userRepository.save(user);
+
         return UserMapper.mapToUserDto(saveUser);
     }
 
