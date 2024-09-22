@@ -18,7 +18,7 @@ public class UserImpl implements  UserService{
     private UserRepository userRepository;
 
     @Override
-    public UserDto createUser(UserDto userDto) {
+    public UserDto register(UserDto userDto) {
 
         // Map data object to entity
         if(userRepository.existsByUserName(userDto.getUserName()) || userRepository.existsByEmail(userDto.getEmail())){

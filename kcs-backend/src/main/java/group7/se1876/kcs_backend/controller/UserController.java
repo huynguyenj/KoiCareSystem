@@ -17,11 +17,11 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ApiResponse<UserDto> createUser(@RequestBody @Valid UserDto userDto){
+    public ApiResponse<UserDto> register(@RequestBody @Valid UserDto userDto){
 
         ApiResponse<UserDto> apiResponse = new ApiResponse<>();
 
-        apiResponse.setResult(userService.createUser(userDto));
+        apiResponse.setResult(userService.register(userDto));
 
       return apiResponse;
     }
