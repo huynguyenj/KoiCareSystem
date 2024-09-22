@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @AllArgsConstructor
-@NoArgsConstructor
 @RestController
 @RequestMapping("/auth")
 
@@ -21,9 +20,6 @@ public class AuthenticationController {
     private AuthenticationService authenticationService;
     @PostMapping("/login")
     ApiResponse<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request){
-
-        System.out.println("Received userName: " + request.getUserName());
-        System.out.println("Received password: " + request.getPassword());
 
         boolean result = authenticationService.authenticate(request);
         AuthenticationResponse authenticationResponse = new AuthenticationResponse();

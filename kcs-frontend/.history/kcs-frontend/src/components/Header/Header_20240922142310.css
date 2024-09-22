@@ -1,0 +1,9 @@
+
+.header{
+      height: 60vh;
+      background: url('/Frame1.png') no-repeat;
+      background-size: contain;
+      position: relative;
+      color: white;
+
+}

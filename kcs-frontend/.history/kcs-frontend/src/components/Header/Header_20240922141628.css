@@ -1,0 +1,8 @@
+.header{
+      height: 35vw;
+      margin: 30px auto;
+      background: url('/Frame1.png') no-repeat;
+      background-size: contain;
+      position: relative;
+      width: 100%;
+}

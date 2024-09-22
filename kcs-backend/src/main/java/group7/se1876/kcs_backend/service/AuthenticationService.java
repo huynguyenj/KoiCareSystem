@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-@NoArgsConstructor
+
 public class AuthenticationService {
     private UserRepository userRepository;
 
@@ -20,7 +20,10 @@ public class AuthenticationService {
 
         //Find username from database
         var user = userRepository.findByUserName(request.getUserName())
-                .orElseThrow(()-> new AppException(ErrorCode.USER_NOT_EXISTED));
+                .orElseThrow(() -> {
+                    return new AppException(ErrorCode.USER_NOT_EXISTED);
+                });
+
         //Check password is match to password in database
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
         //Compare password from request and from database

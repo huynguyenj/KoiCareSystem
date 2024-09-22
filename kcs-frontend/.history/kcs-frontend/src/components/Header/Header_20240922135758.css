@@ -1,0 +1,7 @@
+.header{
+      height: 34vw;
+      margin: 30px auto;
+      background: url('/kcs-frontend/src/assets/Frame\ 1.png') no-repeat;
+      background-size: contain;
+      position: relative;
+}
