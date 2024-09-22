@@ -1,0 +1,23 @@
+.navbar{
+      background-color: black;
+      opacity: 0.78;
+}
+
+.logo{
+      max-width: 150px;
+      height: auto;
+
+}
+a{
+      color: white;
+      font-size: 20px;
+        
+}
+.log-part{
+      border-color: white;
+      border-width: 1px;
+      border-style: solid;
+      width: 15rem;
+      height: 2rem;
+      text-align: center;
+}
