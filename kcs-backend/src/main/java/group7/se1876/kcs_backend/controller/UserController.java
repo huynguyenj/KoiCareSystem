@@ -16,6 +16,7 @@ public class UserController {
 
     private UserService userService;
 
+    //Register
     @PostMapping
     public ApiResponse<UserDto> register(@RequestBody @Valid UserDto userDto){
 
@@ -26,6 +27,7 @@ public class UserController {
       return apiResponse;
     }
 
+    //Get user info
     @GetMapping("{id}")
     public  ApiResponse<UserResponse> getUser(@PathVariable("id") Long userId ){
         ApiResponse<UserResponse> apiResponse = new ApiResponse<>();

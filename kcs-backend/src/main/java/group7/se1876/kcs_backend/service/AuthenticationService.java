@@ -2,41 +2,53 @@ package group7.se1876.kcs_backend.service;
 
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
+import com.nimbusds.jose.crypto.MACVerifier;
 import com.nimbusds.jwt.JWTClaimsSet;
+import com.nimbusds.jwt.SignedJWT;
 import group7.se1876.kcs_backend.dto.request.AuthenticationRequest;
+import group7.se1876.kcs_backend.dto.request.VerifyTokenRequest;
 import group7.se1876.kcs_backend.dto.response.AuthenticationResponse;
+import group7.se1876.kcs_backend.dto.response.VerifyTokenResponse;
 import group7.se1876.kcs_backend.exception.AppException;
 import group7.se1876.kcs_backend.exception.ErrorCode;
 import group7.se1876.kcs_backend.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.NonFinal;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 @Slf4j
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor // Only injects final fields
 
 public class AuthenticationService {
-    private UserRepository userRepository;
-    @NonFinal // set can not be modified
-    protected static final String SIGNAL_KEY = "JYX7huj5qD6nBVR3+VVzxmuubDJCg+CxQnxP5UgjDWY5u8V6qC4ZydJ5EFj58ztJ\n";
 
+    private final UserRepository userRepository;
+
+    @NonFinal
+    @Value("${jwt.signerKey}")
+    protected String SIGNAL_KEY;
+
+    // Authentication when login
     public AuthenticationResponse authenticate(AuthenticationRequest request){
+
         //Find username from database
         var user = userRepository.findByUserName(request.getUserName())
                 .orElseThrow(() -> {
                     return new AppException(ErrorCode.USER_NOT_EXISTED);
                 });
 
-        //Check password is match to password in database
+        //Check password is match to password in database by BCrypt password
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
         //Compare password from request and from database
         boolean authendicated = passwordEncoder.matches(request.getPassword(), user.getPassword());
@@ -44,6 +56,7 @@ public class AuthenticationService {
         if (!authendicated)
             throw new AppException(ErrorCode.UNAUTHENDICATED);
 
+        //Create token for user after checked password successfully
         var token = generateToken(request.getUserName());
         AuthenticationResponse authRes = new AuthenticationResponse();
 
@@ -53,6 +66,8 @@ public class AuthenticationService {
         return authRes;
 
     }
+
+    //Create token
     private String generateToken(String username){
 
         //Create header
@@ -69,10 +84,11 @@ public class AuthenticationService {
                 ))
                 .claim("customerClaimed","Customer") // info of token claim
                 .build();
+
         Payload payload = new Payload(jwtClaimsSet.toJSONObject());
 
-        //
-        JWSObject jwsObject = new JWSObject(jwsHeader,payload);// need 2 param: header and payload
+        //JWTObject: need 2 param: header and payload
+        JWSObject jwsObject = new JWSObject(jwsHeader,payload);
 
         //Sign token ( ensure that it cannot be modified and to prove that it was issued by a trusted party.)
         try {
@@ -82,6 +98,27 @@ public class AuthenticationService {
             log.error("Cannot create token",e);
             throw new RuntimeException(e);
         }
+
+
+    }
+
+    //Verify token of user already login
+    public VerifyTokenResponse verifyToken(VerifyTokenRequest request) throws ParseException, JOSEException {
+
+        var token = request.getToken();
+
+        JWSVerifier verifier = new MACVerifier(SIGNAL_KEY.getBytes());
+
+        SignedJWT signedJWT = SignedJWT.parse(token);
+
+        Date expityTime = signedJWT.getJWTClaimsSet().getExpirationTime(); // Check date expired of token
+        var verified = signedJWT.verify(verifier); // check token sign from request equal to token signKey we create in application.properties
+
+        VerifyTokenResponse verifyTokenResponse = new VerifyTokenResponse();
+        verifyTokenResponse.setValid(verified && expityTime.after(new Date()));
+
+        return verifyTokenResponse;
+
 
 
     }
