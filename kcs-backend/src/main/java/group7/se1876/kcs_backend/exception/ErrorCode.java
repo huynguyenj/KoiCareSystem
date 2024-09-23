@@ -12,7 +12,8 @@ public enum ErrorCode {
     USER_EXISTED(1001, "User existed(please check your username or your email)"),
     INVALID_PASSWORD(1002,"User password must at least 8 character."),
     INVALID_USERID(1003,"This userID is not existed"),
-    USER_NOT_EXISTED(1004, "User invalid(please check your username or your password)")
+    USER_NOT_EXISTED(1004, "User invalid(please check your username or your password)"),
+    UNAUTHENDICATED (1005,"Unauthendicated")
     ;
 
     private int code;
