@@ -49,7 +49,7 @@ function Footer() {
             </ul>
           </div>
           <div className="footer-logo">
-            <img src="/Logo.png" alt="Koiday Logo" />
+            <img src="/Logo2.png" alt="Koiday Logo" />
           </div>
         </div>
         <div

@@ -4,9 +4,9 @@ function Home() {
   return (
     <div>
       <Header></Header>
-      <div style={{ backgroundColor: "lightgray" }}>
-        <h2 style={{ textAlign: "center" }}>Đặc điểm chung</h2>
-        <div>
+      <div id="about" className="grid-container" style={{ backgroundColor: "lightgray" }}>
+        <h2 className="">Đặc điểm chung</h2>
+        <section style={{marginLeft: '100px'}}>
           <p style={{ marginLeft: "20px" }}>
             {" "}
             Những dịch vụ chăm sóc bảo dưỡng hồ cá Koi tại Koiday gồm những gì?
@@ -25,9 +25,9 @@ function Home() {
             cá Koi <br />+ Tư vấn kỹ thuật chăm sóc cá giúp quý khách hàng an
             tâm hơn trong quá trình nuôi dưỡng
           </p>
-        </div>
+        </section>
         <br />
-        <div>
+        <section style={{marginLeft: '100px'}}>
           <p style={{ marginLeft: "20px" }}>
             Chăm sóc hồ cá Koi là rất quan trọng vì những lý do sau: <br />{" "}
             1.Sức khỏe của cá Koi: Cá Koi cần môi trường nước sạch và giàu oxy
@@ -46,7 +46,7 @@ function Home() {
             Việc chăm sóc tốt không chỉ giúp cá khỏe mạnh mà còn làm tăng giá
             trị của chúng khi bán hoặc trao đổi.
           </p>
-        </div>
+        </section>
       </div>
       <Footer></Footer>
     </div>

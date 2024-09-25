@@ -1,3 +1,4 @@
+
 .grid-container {
       position: relative;
       width: 100%;
@@ -9,7 +10,12 @@
 }
 
 .grid-container img {
-      max-width: 100%;
-      height: auto;
+      width: 100%;
+      /* Make the image fill the entire container width */
+      height: 100%;
+      /* Make the image fill the entire container height */
       object-fit: cover;
+      /* Ensures the image covers the container while maintaining aspect ratio */
+      z-index: -1;
+      /* Ensure the image stays behind the navbar */
 }
