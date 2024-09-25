@@ -47,11 +47,15 @@ function Login() {
                       <Button
                         variant="danger"
                         className="w-50"
-                        style={{ marginRight: "20px" }}
+                        style={{
+                          marginRight: "20px",
+                          fontFamily: "JetBrains Mono",
+                        }}
                       >
                         Đăng Ký
                       </Button>
                       <Button
+                        style={{ fontFamily: "JetBrains Mono" }}
                         variant="light"
                         className="w-50"
                         onClick={changePage}
@@ -59,9 +63,13 @@ function Login() {
                         Đăng Nhập
                       </Button>
                     </div>
-                    <Form onSubmit={handleSubmit}>
+                    <Form
+                      onSubmit={handleSubmit}
+                      style={{ fontFamily: "JetBrains Mono" }}
+                    >
                       <Form.Group controlId="formUsername" className="mb-3">
                         <Form.Control
+                          style={{ fontFamily: "JetBrains Mono" }}
                           type="text"
                           placeholder="Tên đăng nhập"
                           value={userName}
@@ -73,6 +81,7 @@ function Login() {
                       </Form.Group>
                       <Form.Group controlId="formPassword" className="mb-3">
                         <Form.Control
+                          style={{ fontFamily: "JetBrains Mono" }}
                           type="password"
                           placeholder="Mật khẩu"
                           value={password}
@@ -84,6 +93,7 @@ function Login() {
                       </Form.Group>
                       <Form.Group controlId="formEmail" className="mb-3">
                         <Form.Control
+                          style={{ fontFamily: "JetBrains Mono" }}
                           type="text"
                           placeholder="Email"
                           value={email}
@@ -95,6 +105,7 @@ function Login() {
                       </Form.Group>
                       <Form.Group controlId="formPhone" className="mb-3">
                         <Form.Control
+                          style={{ fontFamily: "JetBrains Mono" }}
                           type="number"
                           placeholder="Số điện thoại"
                           value={phone}
@@ -107,7 +118,11 @@ function Login() {
                       <div className="text-end mb-3">
                         <a
                           className="form-link"
-                          style={{ color: "black", fontSize: "18px" }}
+                          style={{
+                            color: "black",
+                            fontSize: "18px",
+                            fontFamily: "JetBrains Mono",
+                          }}
                           href="#"
                         >
                           Quên mật khẩu?
@@ -117,11 +132,19 @@ function Login() {
                         Đăng ký
                       </Button>
                     </Form>
-                    <p className="mt-3 text-center">
+                    <p
+                      className="mt-3 text-center"
+                      style={{ fontFamily: "JetBrains Mono" }}
+                    >
                       Bạn có tài khoản rồi? Hãy{" "}
                       <span>
                         {" "}
-                        <a href="#" className="form-link" onClick={changePage}>
+                        <a
+                          style={{ fontFamily: "JetBrains Mono" }}
+                          href="#"
+                          className="form-link"
+                          onClick={changePage}
+                        >
                           Đăng nhập
                         </a>{" "}
                       </span>{" "}

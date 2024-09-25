@@ -19,3 +19,29 @@
       z-index: -1;
       /* Ensure the image stays behind the navbar */
 }
+
+
+.button-overlay {
+      position: relative;
+      display: inline-block;
+}
+
+.button-overlay button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-650px, 300px);
+      padding: 10px 70px;
+      background-color: #A77339;
+      color: #fff;
+      border-radius: 10px;
+      font-size: 40px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-weight: bold;
+      border-style: hidden;
+}
+
+.button-overlay button:hover {
+      background-color: #FFD580;
+}
+

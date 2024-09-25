@@ -26,10 +26,18 @@ function Navbar() {
           />
         </Link>
         <div className="navbar-right d-flex ms-auto align-items-center">
-          <Link to="/" className="nav-item ms-4">
+          <Link
+            to="/"
+            className="nav-item ms-4"
+            style={{ fontFamily: "JetBrains Mono" }}
+          >
             Thông tin chung
           </Link>
-          <Link to="/blog" className="nav-item ms-4">
+          <Link
+            to="/blog"
+            className="nav-item ms-4"
+            style={{ fontFamily: "JetBrains Mono" }}
+          >
             Tin tức và blog
           </Link>
           <a className="nav-item ms-4" href="#">
@@ -41,12 +49,15 @@ function Navbar() {
               style={{ color: "#ffffff" }}
             />
           </a>
-          <div className="log-part ms-4 me-5">
+          <div
+            className="log-part ms-4 me-4"
+            style={{ fontFamily: "JetBrains Mono", marginBottom: "5px" }}
+          >
             <button className="login-link" onClick={login}>
-              Đăng nhập&nbsp;
-            </button>
+              Đăng nhập
+            </button>{"/"}
             <button className="login-link" onClick={register}>
-              /&nbsp; Đăng ký
+              &nbsp;Đăng ký
             </button>
           </div>
         </div>

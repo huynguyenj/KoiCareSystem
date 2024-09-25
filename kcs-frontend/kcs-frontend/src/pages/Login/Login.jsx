@@ -48,18 +48,26 @@ function Login() {
                 <Button
                   variant="light"
                   className="w-50"
-                  style={{ marginRight: "20px" }}
+                  style={{ marginRight: "20px", fontFamily: "JetBrains Mono" }}
                   onClick={changePage}
                 >
                   Đăng Ký
                 </Button>
-                <Button variant="danger" className="w-50">
+                <Button
+                  variant="danger"
+                  className="w-50"
+                  style={{ fontFamily: "JetBrains Mono" }}
+                >
                   Đăng Nhập
                 </Button>
               </div>
-              <Form onSubmit={handleSubmit}>
+              <Form
+                onSubmit={handleSubmit}
+                style={{ fontFamily: "JetBrains Mono" }}
+              >
                 <Form.Group controlId="formUsername" className="mb-3">
                   <Form.Control
+                    style={{ fontFamily: "JetBrains Mono" }}
                     type="text"
                     placeholder="Tên đăng nhập"
                     value={userName}
@@ -68,6 +76,7 @@ function Login() {
                 </Form.Group>
                 <Form.Group controlId="formPassword" className="mb-3">
                   <Form.Control
+                    style={{ fontFamily: "JetBrains Mono" }}
                     type="password"
                     placeholder="Mật khẩu"
                     value={password}
@@ -75,7 +84,15 @@ function Login() {
                   />
                 </Form.Group>
                 <div className="text-end mb-3">
-                  <a className="form-link" style={{ color: "black", fontSize: "18px" }} href="#">
+                  <a
+                    className="form-link"
+                    style={{
+                      color: "black",
+                      fontSize: "18px",
+                      fontFamily: "JetBrains Mono",
+                    }}
+                    href="#"
+                  >
                     Quên mật khẩu?
                   </a>
                 </div>
@@ -83,9 +100,17 @@ function Login() {
                   Đăng nhập
                 </Button>
               </Form>
-              <p className="mt-3 text-center">
+              <p
+                className="mt-3 text-center"
+                style={{ fontFamily: "JetBrains Mono" }}
+              >
                 Bạn chưa có tài khoản? Hãy{" "}
-                <a href="#" className="form-link" onClick={changePage}>
+                <a
+                  href="#"
+                  className="form-link"
+                  onClick={changePage}
+                  style={{ fontFamily: "JetBrains Mono" }}
+                >
                   Đăng ký
                 </a>{" "}
                 trước khi đăng nhập.
