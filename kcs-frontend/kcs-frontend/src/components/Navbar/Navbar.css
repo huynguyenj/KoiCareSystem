@@ -1,23 +1,65 @@
-.navbar{
+
+
+.navbar {
       background-color: black;
+      /* Fully transparent background */
+      position: absolute;
+      /* Position it on top of the header */
+      top: 0;
+      width: 100%;
+      z-index: 1;
+      /* Ensure it stays above the header image */
+      padding: 10px 20px;
       opacity: 0.78;
 }
 
-.logo{
-      max-width: 150px;
-      height: auto;
-
-}
-a{
+.nav-item {
+      position: relative;
       color: white;
-      font-size: 18px;
-        
+      font-size: 20px;
+      text-decoration: none;
+      padding-bottom: 5px;
 }
-.log-part{
-      border-color: white;
-      border-width: 1px;
-      border-style: solid;
-      width: 15rem;
-      height: 2rem;
+
+.nav-item::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: #F4CD79;
+      transition: width 0.3s ease-in-out;
+}
+
+.nav-item:hover::after {
+      width: 100%;
+}
+
+.log-part {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 15px;
+      border: 1px solid #F4CD79;
+      border-radius: 5px;
+      color: #F4CD79;
+      font-size: 20px;
+      font-weight: bold;
+      background-color: transparent;
       text-align: center;
+      cursor: pointer;
+}
+
+.login-link {
+      background: none;
+      border: none;
+      color: #F4CD79;
+      text-decoration: none;
+      margin-right: 5px;
+      font-size: 18px;
+      cursor: pointer;
+}
+
+.login-link:hover {
+      color: #fff;
 }
