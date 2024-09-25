@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api")
 @CrossOrigin
 public class UserController {
 
     private UserService userService;
 
     //Register
-    @PostMapping
+    @PostMapping("/user")
     public ApiResponse<UserDto> register(@RequestBody @Valid UserDto userDto){
 
         ApiResponse<UserDto> apiResponse = new ApiResponse<>();
