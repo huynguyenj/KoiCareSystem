@@ -3,11 +3,12 @@ import './Header.css'
 function Header() {
 
   return (
-   <>
-      <img className='img' src='/Frame1.png'></img>
-    
-   </>
-  )
+    <>
+      <div className="grid-container">
+        <img src="/Frame1.png" />
+      </div>
+    </>
+  );
 }
 
 export default Header
